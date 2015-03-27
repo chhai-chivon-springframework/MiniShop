@@ -15,4 +15,5 @@ import java.util.List;
 public interface CustomerDao {
     public List<Customer> getCustomers();
     public boolean createUser(String email, String name, String password);
+    public Customer loginUser(String email, String password);
 }

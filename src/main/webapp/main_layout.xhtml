@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -11,7 +12,7 @@
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 
-        <title>Facelets Template</title>
+        <title>Mini Shop</title>
     </h:head>
 
     <h:body>
@@ -24,8 +25,14 @@
                             <h:outputText id="shopName" value="#{shopBean.shopName}"/>
                         </h2>
 
-                        <h:link value="signup"  id="signup" outcome="signup"/>
-                        <h:outputText id="customer_name" value="#{authController.name}"/>
+                        <h:link value="Home"  id="home" outcome="home"/> |
+                        <h:outputText id="customer_name" value="#{authController.navigationBarMessage}"/>
+
+                        <h:link  value="Signup"  id="signup" outcome="signup"
+                                       style="#{authController.isLogin == true ? ';':'display:none;'}"/>                        
+                        |
+                        <h:link  value="Login"  id="login" outcome="login"
+                                       style="#{authController.isLogin == true ? ';':'display:none;'}"/>
                     </div>
                 </div>
 

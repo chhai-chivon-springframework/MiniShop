@@ -15,7 +15,7 @@ import org.hibernate.Transaction;
  *
  * @author kemal
  */
-public class CustomerDaoImp implements CustomerDao{
+public class CustomerDaoImp implements CustomerDao {
 
     @Override
     public List<Customer> getCustomers() {
@@ -31,5 +31,17 @@ public class CustomerDaoImp implements CustomerDao{
         t.commit();
         return true;
     }
-    
+
+    @Override
+    public Customer loginUser(String email, String password) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction t = session.beginTransaction();
+        Customer customer = (Customer) session.createQuery("from Customer customer where email =:email and password=:password")
+                        .setParameter("email", email)
+                        .setParameter("password", password)
+                .uniqueResult();
+        t.commit();
+        return customer;
+    }
+
 }
