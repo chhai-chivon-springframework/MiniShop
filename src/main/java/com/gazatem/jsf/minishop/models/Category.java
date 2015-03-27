@@ -1,28 +1,25 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.gazatem.jsf.minishop.models;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-/**
- *
- * @author kemal
- */
 @Entity
-@Table(name="categories")
-public class Category implements Serializable{
-    @Id
-    @GeneratedValue
+@Table(name = "categories")
+public class Category implements Serializable {
+
     private int id;
-    
     private String name;
+    private Set<Product> products;
 
     public Category() {
     }
@@ -32,19 +29,35 @@ public class Category implements Serializable{
         this.name = name;
     }
 
-    /**
-     * @return the id
-     */
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
+    @Column(name = "id", unique = true, nullable = false)
     public int getId() {
         return id;
     }
 
-    /**
-     * @return the name
-     */
     public String getName() {
         return name;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     
     
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+    public Set<Product> getProducts() {
+        return this.products;
+    }
+
+    public void setProducts(Set<Product> products) {
+        this.products = products;
+    }
+    
+
 }

@@ -17,31 +17,21 @@ import javax.faces.context.FacesContext;
 @ManagedBean
 @RequestScoped
 public class ProductController {
-
-    Category category;
+ 
     Product product;
-    int catId;
     int productId;
 
     public ProductController() {
     }
 
-    public Category getCategory() {
-
-        if (catId > 0) {
-            category = new CategoryDaoImp().getCategory(catId);
-            return category;
-        }
-        return null;
-    }
-
+ 
     public Product getProduct() {
         FacesContext context = FacesContext.getCurrentInstance();
         Map<String, String> params = context.getExternalContext().getRequestParameterMap();
         productId = Integer.parseInt(params.get("productId"));
         if (productId > 0) {
             Product product = new ProductDaoImp().getProduct(productId);
-            catId = product.getCatId();
+            //catId = product.getCatId();
             return product;
         }
         return null;

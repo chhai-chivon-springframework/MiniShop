@@ -5,10 +5,7 @@
       xmlns:h="http://java.sun.com/jsf/html">
 
     <body>
-
         <ui:composition template="./main_layout.xhtml">
-
-
             <ui:define name="leftcol">
                 <ul>
                     <ui:repeat value="#{shopBean.categories}" var="category">
@@ -18,7 +15,7 @@
             </ui:define>
             <ui:define name="content">
                 <h:link value="Home" outcome="home" /> :: 
-                <h:link value="#{productController.category.name}" outcome="category?catId=#{productController.category.id}" />
+                <h:link value="#{productController.product.category.name}" outcome="category?catId=#{productController.product.category.id}" />
 
                 <div class="row">
                     <div class="col s3">

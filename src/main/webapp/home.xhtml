@@ -6,7 +6,7 @@
       xmlns:f="http://java.sun.com/jsf/core">
     <body>
         <ui:composition template="./main_layout.xhtml">
- 
+
             <ui:define name="leftcol">
                 <ul>
                     <ui:repeat value="#{shopBean.categories}" var="category">
@@ -15,7 +15,7 @@
                 </ul>                
             </ui:define>
             <ui:define name="content">
-                
+
                 <div class="row">
                     <ui:repeat value="#{shopBean.products}" var="product">
                         <div class="col s3 center-align"> 

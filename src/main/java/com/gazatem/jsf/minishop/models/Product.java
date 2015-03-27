@@ -1,29 +1,34 @@
 package com.gazatem.jsf.minishop.models;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="products")
+@Table(name = "products")
+public class Product implements Serializable {
 
-public class Product implements Serializable{
-    
-    @Id
-    @GeneratedValue
     private int id;
-    
+
     private String name;
     private int quantity;
-    private float  price;
-    private int catId;
+    private float price;
     private String image;
-    
+    private Category category;
+
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
+    @Column(name = "id", unique = true, nullable = false)
     public int getId() {
         return id;
-    } 
+    }
 
     public String getName() {
         return name;
@@ -54,14 +59,6 @@ public class Product implements Serializable{
     }
 
     public Product() {
-    } 
-
-    public int getCatId() {
-        return catId;
-    }
-
-    public void setCatId(int catId) {
-        this.catId = catId;
     }
 
     public String getImage() {
@@ -77,14 +74,17 @@ public class Product implements Serializable{
         this.name = name;
         this.quantity = quantity;
         this.price = price;
-        this.catId = catId;
         this.image = image;
     }
 
-   
-    
-    
-    public static void main(String[] args) {
-        
+    @ManyToOne
+    @JoinColumn(name = "catId")
+    public Category getCategory() {
+        return this.category;
     }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
 }
