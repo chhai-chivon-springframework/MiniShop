@@ -1,4 +1,3 @@
- 
 package com.gazatem.jsf.minishop.models;
 
 import java.io.Serializable;
