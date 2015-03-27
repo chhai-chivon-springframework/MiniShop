@@ -34,5 +34,5 @@ public class CategoryDaoImp implements CategoryDao {
         Category category = (Category) session.createQuery("from Category category where id =:id").setParameter("id",id).uniqueResult();
         t.commit();
         return category;
-    }
+    } 
 }
