@@ -24,15 +24,15 @@
                         <h2>
                             <h:outputText id="shopName" value="#{shopBean.shopName}"/>
                         </h2>
-
                         <h:link value="Home"  id="home" outcome="home"/> |
-                        <h:outputText id="customer_name" value="#{authController.navigationBarMessage}"/>
-
-                        <h:link  value="Signup"  id="signup" outcome="signup"
-                                       style="#{authController.isLogin == true ? ';':'display:none;'}"/>                        
+                        <h:panelGroup rendered="#{authController.customer != null}">
+                            Welcome <h:outputText id="customer_name" value="#{authController.customer.name}"/>
+                        </h:panelGroup>
+                        <h:panelGroup rendered="#{authController.customer == null}">
+                        <h:link  value="Signup"  id="signup" outcome="signup"/>                        
                         |
-                        <h:link  value="Login"  id="login" outcome="login"
-                                       style="#{authController.isLogin == true ? ';':'display:none;'}"/>
+                        <h:link  value="Login"  id="login" outcome="login"/>
+                        </h:panelGroup>
                     </div>
                 </div>
 

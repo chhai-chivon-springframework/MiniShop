@@ -3,7 +3,6 @@ package com.gazatem.jsf.minishop.models;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
@@ -68,7 +67,8 @@ public class Product implements Serializable {
     public void setImage(String image) {
         this.image = image;
     }
-
+ 
+    
     public Product(int id, String name, int quantity, float price, int catId, String image) {
         this.id = id;
         this.name = name;

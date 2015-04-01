@@ -47,8 +47,7 @@ public class Category implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-
-    
+ 
     
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     public Set<Product> getProducts() {
